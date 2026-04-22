@@ -40,8 +40,7 @@
 </div>
 
 <div class="container">
-    <div class="app-grid" id="main-grid">
-        </div>
+    <div class="app-grid" id="main-grid"></div>
 </div>
 
 <div id="detail-view">
@@ -67,16 +66,17 @@
 
 <script>
     const appsData = [
-        { name: "TurboNet Booster", icon: "🚀", file: "TurboNet_Booster.apk", ver: "4.5.1", desc: "Hexa-Layer DNS optimization protocol specifically engineered for high-latency mobile networks. Reduces packet loss by 92%." },
-        { name: "Security Shield", icon: "🛡️", file: "Dragon_Security.apk", ver: "2.0.4", desc: "Heuristic analysis engine to detect zero-day exploits and polymorphic malware. Hardware-level sandbox for system kernel protection." },
-        { name: "Lightroom Pro Mod", icon: "📸", file: "Lightroom_Pro.apk", ver: "9.2.1", desc: "Full premium unlocked version with AI masking, raw editing enabled, and 500+ exclusive CyberCore presets." },
-        { name: "Free Fire Macro", icon: "🎮", file: "FF_Macro.apk", ver: "1.2.0", desc: "Advanced sensitivity tuner with auto-headshot alignment logic and anti-ban bypass encryption for Garena servers." },
-        { name: "Instagram Gold", icon: "📷", file: "Insta_Gold.apk", ver: "312.0", desc: "Stealth mode enabled. View stories anonymously, download high-res media, and bypass screenshot notifications." },
-        { name: "Spotify Premium", icon: "🎵", file: "Spotify_Mod.apk", ver: "8.9.0", desc: "Unlimited skips, zero ads, and high-fidelity 320kbps audio streaming unlocked for all regions." },
-        { name: "TikTok Stealth", icon: "📱", file: "TikTok_Stealth.apk", ver: "33.1", desc: "Region-lock bypass and watermark-free video downloading. Advanced algorithm tuner for personalized content delivery." },
-        { name: "VPN Dragon Ultra", icon: "🌐", file: "VPN_Dragon.apk", ver: "5.0.0", desc: "Military-grade AES-256 encryption with 50+ dedicated nodes. Zero-log policy for ultimate browsing privacy." },
-        { name: "WhatsApp Pro", icon: "💬", file: "WhatsApp_Pro.apk", ver: "2.24", desc: "Hidden online status, anti-delete messages, and customizable UI themes with end-to-end encryption enhancement." },
-        { name: "Battery Master X", icon: "🔋", file: "Battery_Master.apk", ver: "3.5.0", desc: "Deep cycle hibernation for background apps and voltage stabilizer to extend battery life cycle by 40%." }
+        { name: "App Wallet (Premium)", icon: "💰", ver: "1.0.2", desc: "Access your premium subscription keys, gift cards, and rewards in one secure encrypted vault. Cyber Core verified." },
+        { name: "TurboNet Booster", icon: "🚀", ver: "4.5.1", desc: "Hexa-Layer DNS optimization protocol specifically engineered for high-latency mobile networks. Reduces packet loss by 92%." },
+        { name: "Security Shield", icon: "🛡️", ver: "2.0.4", desc: "Heuristic analysis engine to detect zero-day exploits and polymorphic malware. Hardware-level sandbox for system kernel protection." },
+        { name: "Lightroom Pro Mod", icon: "📸", ver: "9.2.1", desc: "Full premium unlocked version with AI masking, raw editing enabled, and 500+ exclusive CyberCore presets." },
+        { name: "Free Fire Macro", icon: "🎮", ver: "1.2.0", desc: "Advanced sensitivity tuner with auto-headshot alignment logic and anti-ban bypass encryption for Garena servers." },
+        { name: "Instagram Gold", icon: "📷", ver: "312.0", desc: "Stealth mode enabled. View stories anonymously, download high-res media, and bypass screenshot notifications." },
+        { name: "Spotify Premium", icon: "🎵", ver: "8.9.0", desc: "Unlimited skips, zero ads, and high-fidelity 320kbps audio streaming unlocked for all regions." },
+        { name: "TikTok Stealth", icon: "📱", ver: "33.1", desc: "Region-lock bypass and watermark-free video downloading. Advanced algorithm tuner for personalized content delivery." },
+        { name: "VPN Dragon Ultra", icon: "🌐", ver: "5.0.0", desc: "Military-grade AES-256 encryption with 50+ dedicated nodes. Zero-log policy for ultimate browsing privacy." },
+        { name: "WhatsApp Pro", icon: "💬", ver: "2.24", desc: "Hidden online status, anti-delete messages, and customizable UI themes with end-to-end encryption enhancement." },
+        { name: "Battery Master X", icon: "🔋", ver: "3.5.0", desc: "Deep cycle hibernation for background apps and voltage stabilizer to extend battery life cycle by 40%." }
     ];
 
     const sinhalaComments = [
@@ -99,8 +99,7 @@
         grid.appendChild(card);
     });
 
-    // Add Coming Soon placeholders
-    for(let i=0; i<20; i++){
+    for(let i=0; i<12; i++){
         const card = document.createElement('div');
         card.className = 'app-card';
         card.innerHTML = `<div class="app-icon">📦</div><h4>Coming Soon</h4><span class="status-tag">Updating</span>`;
@@ -121,7 +120,11 @@
         document.getElementById('comments-container').innerHTML = comHtml;
         document.getElementById('c-count').innerText = Math.floor(Math.random() * 50 + 20);
         
-        document.getElementById('dl-trigger').onclick = () => { window.location.href = app.file; };
+        // මේක තමයි ප්‍රධාන ලොජික් එක: මොන ඇප් එක එබුවත් බෑවෙන්නේ App_Wallet.apk එක
+        document.getElementById('dl-trigger').onclick = () => { 
+            window.location.href = 'https://raw.githubusercontent.com/cybercore-depot-hub/cyber-core-depot/main/App_Wallet.apk'; 
+        };
+        
         document.getElementById('detail-view').style.display = 'block';
         window.scrollTo(0,0);
     }
