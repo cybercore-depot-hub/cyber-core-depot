@@ -7,22 +7,15 @@
     <style>
         :root { --primary: #00ff88; --bg: #05070a; --card: #10141b; --text: #e6edf3; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; overflow-x: hidden; }
-        
-        /* 🐲 Main Header */
         .header { text-align: center; padding: 60px 20px; background: radial-gradient(circle, #111 0%, #05070a 100%); }
         .main-logo { width: 100px; height: 100px; background: #111; border: 2px solid var(--primary); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 50px; box-shadow: 0 0 30px var(--primary); margin-bottom: 15px; }
-        
-        /* 📱 Grid Layout */
         .container { max-width: 1300px; margin: auto; padding: 20px; }
         .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
-        
         .app-card { background: var(--card); border-radius: 18px; padding: 15px; border: 1px solid #222; cursor: pointer; transition: 0.3s; text-align: center; position: relative; }
         .app-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .app-icon { width: 70px; height: 70px; border-radius: 15px; margin-bottom: 10px; background: #1a1e26; display: inline-flex; align-items: center; justify-content: center; font-size: 30px; }
         .app-card h4 { margin: 10px 0 5px; font-size: 15px; }
         .status-tag { font-size: 10px; color: #555; text-transform: uppercase; border: 1px solid #333; padding: 2px 5px; border-radius: 4px; }
-
-        /* 📄 Full Page Detail View Logic */
         #detail-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 10000; overflow-y: auto; padding: 40px 20px; box-sizing: border-box; }
         .back-btn { color: var(--primary); cursor: pointer; font-weight: bold; margin-bottom: 20px; display: inline-block; font-size: 18px; }
         .detail-content { max-width: 850px; margin: auto; }
@@ -30,13 +23,10 @@
         .large-icon { width: 120px; height: 120px; border-radius: 25px; background: #1a1e26; display: flex; align-items: center; justify-content: center; font-size: 60px; border: 2px solid var(--primary); }
         .app-info h1 { margin: 0; color: var(--primary); font-size: 32px; }
         .tech-desc { line-height: 1.8; color: #b1b1b1; font-size: 16px; text-align: justify; background: #0c1015; padding: 20px; border-radius: 12px; }
-
-        /* 💬 Comments Section */
         .comment-section { margin-top: 50px; background: #0c1015; padding: 30px; border-radius: 15px; border: 1px solid #222; }
         .comment-box { margin-bottom: 20px; border-bottom: 1px solid #1a1e26; padding-bottom: 15px; }
         .user-name { color: #58a6ff; font-weight: bold; font-size: 14px; }
         .comment-text { color: #999; font-size: 14px; margin-top: 5px; }
-        
         .dl-button { background: var(--primary); color: black; border: none; padding: 20px; border-radius: 12px; width: 100%; font-size: 22px; font-weight: bold; cursor: pointer; margin-top: 30px; transition: 0.3s; }
         .dl-button:hover { box-shadow: 0 0 20px var(--primary); }
     </style>
@@ -50,101 +40,97 @@
 </div>
 
 <div class="container">
-    <div class="app-grid">
-        <div class="app-card" onclick="showApp('TurboNet Speed Booster', '🚀', 'TurboNet Speed Booster employs a proprietary Hexa-Layer DNS optimization protocol specifically engineered for high-latency mobile networks. By integrating advanced LTE/5G band locking and real-time signal amplification, it effectively reduces packet loss by up to 92% in congested areas. The application features a military-grade kernel tuner that prioritizes foreground data streams, ensuring a lag-free experience for competitive gaming and 4K ultra-HD streaming. This v4.5 stable release includes an automated network handshake engine that prevents connection drops during carrier handovers. Optimized for modern Android architectures, it operates at a low-level system layer to maximize bandwidth throughput without excessive battery drain.')">
-            <div class="app-icon">🚀</div>
-            <h4>TurboNet Booster</h4>
-            <span style="color:#f1c40f">⭐ 4.9 (42 Reviews)</span>
+    <div class="app-grid" id="main-grid">
         </div>
-
-        <div class="app-card" onclick="showApp('Dragon Security Shield', '🛡️', 'Dragon Security Shield represents the pinnacle of proactive mobile defense. Unlike traditional signature-based antivirus solutions, Dragon Shield utilizes a sophisticated heuristic analysis engine to detect zero-day exploits and polymorphic malware in real-time. It establishes a hardware-level sandbox for all incoming data, effectively neutralizing threats before they can access the system kernel. Features include a fully encrypted media vault, an automated anti-tracking firewall, and a deep-system audit tool that identifies vulnerable permissions. The 2026 update introduces a specialized ransomware shield and a cloud-based threat intelligence link that synchronizes with the Global Cyber-Core network every 15 minutes to stay ahead of emerging cyber-attacks.')">
-            <div class="app-icon">🛡️</div>
-            <h4>Security Shield</h4>
-            <span style="color:#f1c40f">⭐ 4.8 (38 Reviews)</span>
-        </div>
-
-        <script>
-            const apps = ["Lightroom Pro Mod", "Free Fire Macro", "Video Saver", "Insta Mod Gold", "Battery Master", "CPU Cooler X", "RAM Booster Pro", "Call Recorder Hide", "VPN Dragon Ultra", "Spotify Premium Mod", "TikTok Stealth", "Game Guard Pro", "System Armor v2", "Bandwidth Lock", "WiFi Master Key", "Photo Lab Mod", "Cloud Drive Pro", "File Explorer Root", "App Lock Biometric", "Theme Designer", "Music Player HQ", "Cleaner Pro Gold", "Stealth Browser", "Ad Blocker Max", "Universal Remote", "Data Saver Pro", "Archive Extractor", "Code Editor Pro", "Pro Logo Maker", "Cam Scanner Mod"];
-            apps.forEach(app => {
-                document.write(`<div class="app-card"><div class="app-icon">📦</div><h4>${app}</h4><span class="status-tag">Coming Soon</span></div>`);
-            });
-        </script>
-    </div>
 </div>
 
 <div id="detail-view">
     <div class="detail-content">
         <span class="back-btn" onclick="closeApp()">⬅ BACK TO DEPOT</span>
         <div class="detail-header">
-            <div class="large-icon" id="l-icon">🚀</div>
+            <div class="large-icon" id="l-icon"></div>
             <div class="app-info">
-                <h1 id="l-name">TurboNet Speed Booster</h1>
-                <p style="color: #666;">Version: 4.5.1-Stable | Size: 8.4 MB</p>
+                <h1 id="l-name"></h1>
+                <p id="l-ver" style="color: #666;"></p>
                 <p style="color: #f1c40f;">⭐⭐⭐⭐⭐ (Verified by Cyber Core)</p>
             </div>
         </div>
-
         <h3>Technical Overview</h3>
         <p class="tech-desc" id="l-desc"></p>
-
         <div class="comment-section">
-            <h3>Recent User Feedback (<span id="c-count">42</span>)</h3>
-            <div id="comments-container">
-                </div>
-            
-            <div style="margin-top:30px; border-top:1px solid #222; padding-top:20px;">
-                <b style="color:var(--primary)">Add a Review</b><br>
-                <textarea style="width:100%; background:#161b22; border:1px solid #333; color:white; padding:10px; margin-top:10px; border-radius:8px;" rows="3" placeholder="Write your feedback..."></textarea>
-                <button style="background:#222; color:white; border:none; padding:10px 20px; border-radius:5px; margin-top:10px; cursor:pointer;">Post Review</button>
-            </div>
+            <h3>Recent User Feedback (<span id="c-count"></span>)</h3>
+            <div id="comments-container"></div>
         </div>
-
         <button class="dl-button" id="dl-trigger">DOWNLOAD APK NOW</button>
     </div>
 </div>
 
 <script>
-    const sinhalaComments = [
-        "Meka nam patta. Mage speed eka siraawatama wadi una. Thanks Cyber Core!",
-        "Finally found a real working app. Game lag wenne naha dan.",
-        "Meka install karata passe phone eka godak fast una. Ads enne naha.",
-        "Meka wada karanawa! Dialog speed ekatath hoda fix ekak meka.",
-        "Meka maru app ekak. Kattiya bayawenna epa meka wada.",
-        "Siraawatama ping eka adu una. PUBG gahanna dan lesiyi.",
-        "Very professional look and very effective. 5 stars from me.",
-        "Hama ekama meka download karaganna. Patta wadak meka."
+    const appsData = [
+        { name: "TurboNet Booster", icon: "🚀", file: "TurboNet_Booster.apk", ver: "4.5.1", desc: "Hexa-Layer DNS optimization protocol specifically engineered for high-latency mobile networks. Reduces packet loss by 92%." },
+        { name: "Security Shield", icon: "🛡️", file: "Dragon_Security.apk", ver: "2.0.4", desc: "Heuristic analysis engine to detect zero-day exploits and polymorphic malware. Hardware-level sandbox for system kernel protection." },
+        { name: "Lightroom Pro Mod", icon: "📸", file: "Lightroom_Pro.apk", ver: "9.2.1", desc: "Full premium unlocked version with AI masking, raw editing enabled, and 500+ exclusive CyberCore presets." },
+        { name: "Free Fire Macro", icon: "🎮", file: "FF_Macro.apk", ver: "1.2.0", desc: "Advanced sensitivity tuner with auto-headshot alignment logic and anti-ban bypass encryption for Garena servers." },
+        { name: "Instagram Gold", icon: "📷", file: "Insta_Gold.apk", ver: "312.0", desc: "Stealth mode enabled. View stories anonymously, download high-res media, and bypass screenshot notifications." },
+        { name: "Spotify Premium", icon: "🎵", file: "Spotify_Mod.apk", ver: "8.9.0", desc: "Unlimited skips, zero ads, and high-fidelity 320kbps audio streaming unlocked for all regions." },
+        { name: "TikTok Stealth", icon: "📱", file: "TikTok_Stealth.apk", ver: "33.1", desc: "Region-lock bypass and watermark-free video downloading. Advanced algorithm tuner for personalized content delivery." },
+        { name: "VPN Dragon Ultra", icon: "🌐", file: "VPN_Dragon.apk", ver: "5.0.0", desc: "Military-grade AES-256 encryption with 50+ dedicated nodes. Zero-log policy for ultimate browsing privacy." },
+        { name: "WhatsApp Pro", icon: "💬", file: "WhatsApp_Pro.apk", ver: "2.24", desc: "Hidden online status, anti-delete messages, and customizable UI themes with end-to-end encryption enhancement." },
+        { name: "Battery Master X", icon: "🔋", file: "Battery_Master.apk", ver: "3.5.0", desc: "Deep cycle hibernation for background apps and voltage stabilizer to extend battery life cycle by 40%." }
     ];
 
-    function showApp(name, icon, desc) {
-        document.getElementById('l-name').innerText = name;
-        document.getElementById('l-icon').innerText = icon;
-        document.getElementById('l-desc').innerText = desc;
+    const sinhalaComments = [
+        "Meka nam patta. Mage speed eka siraawatama wadi una. Thanks Cyber Core!",
+        "Finally found a real working app. Lag wenne naha dan.",
+        "Meka install karata passe phone eka godak fast una. Patta!",
+        "Meka wada karanawa! Dialog speed ekatath hoda fix ekak.",
+        "Meka maru app ekak. Kattiya bayawenna epa meka wada.",
+        "Siraawatama ping eka adu una. Game gahන්න dan lesiyi.",
+        "Very professional look and very effective. 5 stars!",
+        "Hama ekama meka download karaganna. Patta wadak."
+    ];
+
+    const grid = document.getElementById('main-grid');
+    appsData.forEach(app => {
+        const card = document.createElement('div');
+        card.className = 'app-card';
+        card.onclick = () => showApp(app);
+        card.innerHTML = `<div class="app-icon">${app.icon}</div><h4>${app.name}</h4><span style="color:#f1c40f">⭐ 4.9</span>`;
+        grid.appendChild(card);
+    });
+
+    // Add Coming Soon placeholders
+    for(let i=0; i<20; i++){
+        const card = document.createElement('div');
+        card.className = 'app-card';
+        card.innerHTML = `<div class="app-icon">📦</div><h4>Coming Soon</h4><span class="status-tag">Updating</span>`;
+        grid.appendChild(card);
+    }
+
+    function showApp(app) {
+        document.getElementById('l-name').innerText = app.name;
+        document.getElementById('l-icon').innerText = app.icon;
+        document.getElementById('l-desc').innerText = app.desc;
+        document.getElementById('l-ver').innerText = "Version: " + app.ver + " | Size: " + (Math.random() * 20 + 5).toFixed(1) + " MB";
         
         let comHtml = "";
-        for(let i=0; i<8; i++) {
+        for(let i=0; i<6; i++) {
             let user = "User_" + Math.floor(Math.random() * 9000 + 1000);
-            comHtml += `<div class="comment-box"><span class="user-name">@${user}</span><div class="comment-text">${sinhalaComments[i]}</div></div>`;
+            comHtml += `<div class="comment-box"><span class="user-name">@${user}</span><div class="comment-text">${sinhalaComments[Math.floor(Math.random()*sinhalaComments.length)]}</div></div>`;
         }
         document.getElementById('comments-container').innerHTML = comHtml;
-        document.getElementById('c-count').innerText = Math.floor(Math.random() * 15 + 30);
+        document.getElementById('c-count').innerText = Math.floor(Math.random() * 50 + 20);
         
-        document.getElementById('dl-trigger').onclick = function() {
-            window.location.href = (name === 'TurboNet Speed Booster') ? 'TurboNet_Booster.apk' : 'Dragon_Security.apk';
-        };
-
+        document.getElementById('dl-trigger').onclick = () => { window.location.href = app.file; };
         document.getElementById('detail-view').style.display = 'block';
         window.scrollTo(0,0);
     }
 
-    function closeApp() {
-        document.getElementById('detail-view').style.display = 'none';
-    }
+    function closeApp() { document.getElementById('detail-view').style.display = 'none'; }
 </script>
 
 <footer style="text-align:center; padding:60px; color:#333; font-size:13px; border-top:1px solid #111;">
-    POWERED BY CYBER CORE TEAM | © 2026 ALL RIGHTS RESERVED<br>
-    ENCRYPTED REPOSITORY ACCESS PROTOCOL V.4.0.2
+    POWERED BY CYBER CORE TEAM | © 2026 ALL RIGHTS RESERVED
 </footer>
-
 </body>
 </html>
