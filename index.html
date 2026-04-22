@@ -3,83 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber-Core Depot | Premium Android Tools</title>
+    <title>Cyber Core Depot - Premium Android Tools</title>
     <style>
-        /* Dark Dragon Theme Style */
-        body { background-color: #0d1117; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .header { padding: 40px 0; border-bottom: 2px solid #21262d; }
-        .logo { width: 120px; border-radius: 50%; border: 3px solid #58a6ff; }
-        
-        /* App Grid Layout */
-        .app-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
-        .app-card { background: #161b22; border: 1px solid #30363d; border-radius: 15px; width: 280px; padding: 20px; transition: 0.3s; }
-        .app-card:hover { border-color: #58a6ff; transform: translateY(-5px); }
-        .app-card img { width: 80px; border-radius: 18px; }
-        .rating { color: #f1c40f; font-size: 14px; margin: 5px 0; }
-        .dl-btn { background-color: #238636; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
-        
-        /* Fake Reviews Section */
-        .reviews { margin-top: 50px; background: #161b22; padding: 30px; border-radius: 15px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .review-item { border-bottom: 1px solid #30363d; padding: 15px 0; }
-        .review-item b { color: #58a6ff; }
+        :root {
+            --primary: #00ff88;
+            --dark: #0a0e17;
+            --card: #161b22;
+            --text-main: #e6edf3;
+            --text-sub: #8b949e;
+        }
 
-        footer { margin-top: 50px; color: #8b949e; font-size: 12px; }
-        .verified-badge { width: 150px; margin-top: 20px; opacity: 0.7; }
+        body {
+            background-color: var(--dark);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 🐲 Modern Logo Area */
+        .main-header {
+            text-align: center;
+            padding: 60px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dragon-logo {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            letter-spacing: 6px;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header-sub {
+            color: var(--text-sub);
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        /* 📱 App Grid */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 50px;
+        }
+
+        .app-card {
+            background-color: var(--card);
+            border-radius: 20px;
+            border: 1px solid #30363d;
+            padding: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .app-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .app-icon {
+            width: 70px;
+            border-radius: 18px;
+        }
+
+        .app-name {
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .rating {
+            color: #f1c40f;
+            font-size: 0.9em;
+        }
+
+        .app-desc-short {
+            color: var(--text-sub);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .info-btn {
+            background-color: #21262d;
+            color: var(--primary);
+            border: 1px solid #30363d;
+            padding: 12px 0;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 📝 App Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: #1a1e29;
+            padding: 35px;
+            border-radius: 25px;
+            border: 1px solid var(--primary);
+            z-index: 1000;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .modal h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .modal-version {
+            color: var(--text-sub);
+            font-size: 0.8em;
+            margin-bottom: 15px;
+        }
+
+        .modal-desc {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 25px;
+        }
+
+        .review-section {
+            background-color: #0e121a;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .review-title {
+            color: var(--text-sub);
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .review-item {
+            font-size: 0.9em;
+            margin: 8px 0;
+        }
+
+        .review-author {
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .download-btn {
+            background-color: var(--primary);
+            color: #0a0e17;
+            border: none;
+            padding: 18px 0;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            opacity: 0.9;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 999;
+        }
+
+        /* 🦶 Footer */
+        footer {
+            margin-top: 80px;
+            padding: 40px;
+            border-top: 1px solid #30363d;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .footer-text {
+            color: var(--text-sub);
+            font-size: 0.8em;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <img src="https://cdn-icons-png.flaticon.com/512/2592/2592231.png" alt="Dragon Logo" class="logo">
-        <h1>CYBER CORE DEPOT</h1>
-        <p>Premium & Modded Android Applications - All Verified by Play Protect</p>
+<div class="main-header">
+    <img src="https://image_gen.com/logos/cyber-core-dragon.webp" class="dragon-logo" alt="Cyber Core">
+    <h1>CYBER CORE DEPOT</h1>
+    <div class="header-sub">Premium Android Mod Repository</div>
+</div>
+
+<div class="app-grid">
+    <div class="app-card" onclick="openApp('TurboNet Speed Booster', 'v4.5', 'DNS optimization, ping stabilization, and network acceleration for low-end devices and slow connections. Verified 5G/LTE compatibility.', 'Kanishka_Perera: \'අඩෝ සිරාවටම වැඩ! PUBG ping එක 40ට බැස්සා.\', John_Doe: \'Awesome! Fixed my streaming lag issue instantly.\'')">
+        <div class="card-header">
+            <img src="https://image_gen.com/icons/turbonet-icon.webp" class="app-icon" alt="TurboNet icon">
+            <div>
+                <div class="app-name">TurboNet Speed Booster</div>
+                <div class="rating">⭐ 4.9 (1.2M Downloads)</div>
+            </div>
+        </div>
+        <div class="app-desc-short">Optimize DNS and network signals for better speed.</div>
+        <button class="info-btn">View Details & Download</button>
     </div>
 
-    <div class="app-container">
-        <div class="app-card">
-            <img src="https://cdn-icons-png.flaticon.com/512/2983/2983791.png" alt="TurboNet">
-            <h3>TurboNet Speed Booster</h3>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9/5)</p>
-            <p style="font-size: 12px; color: #8b949e;">Optimize ping and stabilize LTE/5G signals for gaming.</p>
-            <button class="dl-btn" onclick="window.location.href='TurboNet_Speed_Booster.apk'">DIRECT DOWNLOAD</button>
+    <div class="app-card" onclick="openApp('Dragon Security Shield', 'v2.1', 'Advanced real-time threat detection, malware scanning, and system optimization to keep your device secure and fast.', 'Nuwan_99: \'මාරම ඇප් එක. ෆෝන් එක ස්ලෝ වෙන්නෙ නෑ දැන්.\', Sarah_Dev: \'Best security solution for power users.\'')">
+        <div class="card-header">
+            <img src="https://image_gen.com/icons/dragonsecurity-icon.webp" class="app-icon" alt="Dragon Security icon">
+            <div>
+                <div class="app-name">Dragon Security Shield</div>
+                <div class="rating">⭐ 4.8 (850k Downloads)</div>
+            </div>
         </div>
-
-        <div class="app-card">
-            <img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png" alt="Security">
-            <h3>Dragon Security Shield</h3>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.8/5)</p>
-            <p style="font-size: 12px; color: #8b949e;">Deep system scan to protect against modern threats.</p>
-            <button class="dl-btn" onclick="window.location.href='Dragon_Security.apk'">DIRECT DOWNLOAD</button>
-        </div>
-
-        <div class="app-card">
-            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968502.png" alt="Lightroom">
-            <h3>Lightroom Premium Mod</h3>
-            <p class="rating">⭐⭐⭐⭐ (4.7/5)</p>
-            <p style="font-size: 12px; color: #8b949e;">All premium presets unlocked for free.</p>
-            <button class="dl-btn" onclick="alert('Server Busy - Please try again later')">DOWNLOAD</button>
-        </div>
-
-        </div>
-
-    <div class="reviews">
-        <h3>User Feedback</h3>
-        <div class="review-item">
-            <b>Amila Sandun:</b> "පට්ට App එකක්. මගේ Dialog එකේ speed එක double වුණා. Thanks Cyber Core!"
-        </div>
-        <div class="review-item">
-            <b>Nuwan_99:</b> "Data ඉවර වෙන්නෙත් නෑ දැන්. පට්ට!"
-        </div>
-        <div class="review-item">
-            <b>Sarah Jenkins:</b> "Best security app I've ever used. My phone feels much faster."
-        </div>
+        <div class="app-desc-short">Real-time threat protection and device cleaning.</div>
+        <button class="info-btn">View Details & Download</button>
     </div>
 
-    <img src="https://www.gstatic.com/android/market_images/web/play_prism_h_400.png" class="verified-badge" alt="Verified Badge">
+    </div>
 
-    <footer>
-        <p>© 2026 CYBER CORE TEAM | ALL RIGHTS RESERVED | POWERED BY DARK DRAGON TECHNOLOGY</p>
-    </footer>
+<div class="overlay" id="overlay" onclick="closeApp()"></div>
+<div class="modal" id="appModal">
+    <h2 id="m-name">App Name</h2>
+    <div id="m-ver" class="modal-version">Version: </div>
+    <div id="m-desc" class="modal-desc">App Description</div>
+    
+    <div class="review-section">
+        <div class="review-title">Recent Feedbacks</div>
+        <div id="m-reviews">Reviews</div>
+    </div>
+
+    <button class="download-btn" onclick="startDownload()">DOWNLOAD APK</button>
+</div>
+
+<script>
+    let currentAppName = '';
+
+    function openApp(name, ver, desc, reviews) {
+        currentAppName = name;
+        document.getElementById('m-name').innerText = name;
+        document.getElementById('m-ver').innerText = "Version: " + ver;
+        document.getElementById('m-desc').innerText = desc;
+
+        // Populate Reviews
+        const reviewsArray = reviews.split(', ');
+        const reviewsHtml = reviewsArray.map(review => {
+            const [author, comment] = review.split(': ');
+            return `<div class="review-item"><span class="review-author">${author}:</span> ${comment}</div>`;
+        }).join('');
+        document.getElementById('m-reviews').innerHTML = reviewsHtml;
+
+        document.getElementById('appModal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeApp() {
+        document.getElementById('appModal').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    function startDownload() {
+        if (currentAppName === 'TurboNet Speed Booster') {
+            window.location.href = 'TurboNet_Booster.apk';
+        } else if (currentAppName === 'Dragon Security Shield') {
+            window.location.href = 'Dragon_Security.apk';
+        }
+    }
+</script>
+
+<footer>
+    <p class="footer-text">© 2026 CYBER CORE TEAM | ALL RIGHTS RESERVED | POWERED BY DARK DRAGON TECHNOLOGY</p>
+</footer>
 
 </body>
 </html>
